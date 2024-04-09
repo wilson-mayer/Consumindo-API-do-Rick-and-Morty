@@ -21,12 +21,13 @@ function getCharacters(page) {
         characterCard.classList.add("character-card");
 
         characterCard.innerHTML = `
+        <div class="border border-success rounded">
         <img src='${character.image}'alt=''>
-        <p>${character.name}</p>
+        <h5>${character.name}</h5>
         <p>${character.status} - ${character.species}</p>
 
         <p>Ultima localização conhecida <br> ${character.location.name}</p>
-        <p> <a href='${character.url}'>Detalhes do personagem</a></p>`;
+        <p> <a href='${character.url}'>Detalhes do personagem</a></p></div>`;
 
         cardsContainer.appendChild(characterCard);
       });
