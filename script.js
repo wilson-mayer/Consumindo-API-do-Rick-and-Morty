@@ -1,4 +1,5 @@
 const cardsContainer = document.querySelector(".container-cards");
+const contentModal = document.querySelector(".modal");
 
 let currentePage = 1;
 const ItemsPerPage = 6;
@@ -19,15 +20,22 @@ function getCharacters(page) {
       slicedCharacters.forEach((character) => {
         const characterCard = document.createElement("div");
         characterCard.classList.add("character-card");
+        const details = character.url;
 
         characterCard.innerHTML = `
-        <div class="border border-success rounded">
-        <img src='${character.image}'alt=''>
-        <h5>${character.name}</h5>
-        <p>${character.status} - ${character.species}</p>
+        <div class="card bg-transparent">
+        <img src='${character.image}'alt=''class="card-img-top">
+        <div class="card-body bg-transparent border  border-top-0 border-success rounded-bottom">
+        <a href="${details}" class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1">${character.name}</a>
+        <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
 
-        <p>Ultima localização conhecida <br> ${character.location.name}</p>
-        <p> <a href='${character.url}'>Detalhes do personagem</a></p></div>`;
+        <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
+        
+        </div>
+        </div>
+        
+        
+        `;
 
         cardsContainer.appendChild(characterCard);
       });
@@ -35,4 +43,23 @@ function getCharacters(page) {
     .catch((error) => console.error("erro ao obter dados", error));
 }
 
-getCharacters(currentePage);
+// Função para carregar a próxima página
+function loadNextPage() {
+  currentePage++;
+  cardsContainer.innerHTML = "";
+  getCharacters(currentePage);
+}
+
+// Função para carregar a página anterior
+function loadPreviousPage() {
+  if (currentePage > 1) {
+    currentePage--;
+  }
+  cardsContainer.innerHTML = "";
+  getCharacters(currentePage);
+}
+
+// Carregar a primeira página ao carregar a página
+window.onload = function () {
+  getCharacters(currentePage);
+};

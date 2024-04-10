@@ -9,16 +9,20 @@
   margin-top: 5px;
   margin-left: 5px;
 }
+.headertop {
+  height: 300px;
+}
 
 #title-api {
-  font-size: 55px;
-  color: green;
+  font-size: 5rem;
+  color: #105718;
+  font-weight: 800;
 }
 .background-container {
   display: flex;
   justify-content: center;
   background-image: url(../images/FUNDO_2.jpg);
-  background-size: 100%;
+  background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
   padding-bottom: 500px;
@@ -36,29 +40,40 @@
   border-radius: 5px;
   padding: 1rem;
   margin: 1rem;
-  width: 300px;
+  width: 350px;
   display: flex;
   flex-direction: column;
 }
 
-.character-card img {
+/* .character-card img {
   border-radius: 5px;
   width: 266px;
   height: auto;
   margin-bottom: 1rem;
-}
+} */
 
-.character-card p {
+/* .character-card p {
   margin-left: 10px;
   color: white;
-}
+} */
 footer {
   /* width: 100vw; */
   background-color: rgb(19, 18, 18);
   height: 200px;
 }
 
-.character-card h5 {
+/* .character-card h5 {
   margin-left: 10px;
+  color: white;
+} */
+
+.card {
+  width: 18rem;
+}
+
+.nomehover:hover {
+  color: orange;
+}
+.card-title {
   color: white;
 }

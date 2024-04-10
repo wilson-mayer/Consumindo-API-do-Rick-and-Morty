@@ -22,7 +22,9 @@
         </div>
       </div>
       <div class="row text-center mt-5 mb-3">
-        <div class="col"><h1 id="title-api">API de Rick and Morty</h1></div>
+        <div class="col">
+          <h1 class="" id="title-api">API de Rick and Morty</h1>
+        </div>
       </div>
       <div class="row justify-content-center mb-5">
         <div class="col-6">
@@ -52,9 +54,14 @@
         </div>
       </div>
     </div>
+
     <div class="container-fluid background-container">
+      <button id="prev-btn" onclick="loadPreviousPage()">Anterior</button>
+      <button id="next-btn" onclick="loadNextPage()">Próximo</button>
       <div class="row container-cards"></div>
     </div>
+
+    <div class="modal"></div>
 
     <footer class="container-fluid">
       <div class="row">
