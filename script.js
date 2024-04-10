@@ -4,11 +4,18 @@ const contentModal = document.querySelector(".modal");
 let currentePage = 1;
 const ItemsPerPage = 6;
 
-function getCharacters(page) {
+function getCharacters(page = 1) {
   api
     .get(`/character/?page=${page}`)
     .then((response) => {
       const characters = response.data.results;
+
+      if (response.data.info.next) {
+        getCharacters(page + 1);
+      } else {
+        // Quando não houver mais páginas, faça algo com os personagens
+        console.log("Todos os personagens foram buscados:", characters);
+      }
 
       const charactersNumber = response.data.info;
 
@@ -80,5 +87,5 @@ function loadPreviousPage() {
 
 // Carregar a primeira página ao carregar a página
 window.onload = function () {
-  getCharacters(currentePage);
+  getCharacters();
 };
