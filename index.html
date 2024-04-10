@@ -56,8 +56,24 @@
     </div>
 
     <div class="container-fluid background-container">
-      <button id="prev-btn" onclick="loadPreviousPage()">Anterior</button>
-      <button id="next-btn" onclick="loadNextPage()">Próximo</button>
+      <div class="row">
+        <nav aria-label="Search results pages">
+          <ul class="pagination">
+            <li class="page-item">
+              <button class="page-link" onclick="loadPreviousPage()">
+                Previous
+              </button>
+            </li>
+
+            <li class="page-item">
+              <button class="page-link" onclick="loadNextPage()">Next</button>
+            </li>
+          </ul>
+        </nav>
+      </div>
+
+      <!-- <button id="prev-btn" onclick="loadPreviousPage()">Anterior</button>
+      <button id="next-btn" onclick="loadNextPage()">Próximo</button> -->
       <div class="row container-cards"></div>
     </div>
 
@@ -65,12 +81,14 @@
 
     <footer class="container-fluid">
       <div class="row">
-        <div class="col">Personagens</div>
-        <div class="col">Localizações</div>
-        <div class="col">Episódios</div>
+        <div id="personagens" class="col"></div>
+        <div id="localizacoes" class="col"></div>
+        <div id="episodios" class="col"></div>
       </div>
       <div class="row">
-        <div class="col"></div>
+        <div class="col">
+          <p>Desenvolvido por: Wilson Ramos Mayer em 2024</p>
+        </div>
       </div>
     </footer>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

@@ -9,6 +9,7 @@ function getCharacters(page) {
     .get(`/character/?page=${page}`)
     .then((response) => {
       const characters = response.data.results;
+      const charactersNumber = response.data.info;
 
       const startIndex = (page - 1) * ItemsPerPage;
       const endIndex = startIndex + ItemsPerPage;
@@ -17,7 +18,10 @@ function getCharacters(page) {
       console.log(response);
       console.log(response.data.info);
 
-      slicedCharacters.forEach((character) => {
+      const personagens = document.getElementById("personagens");
+      personagens.innerHTML = `<p>PERSONAGENS: ${charactersNumber.count}</p>`;
+
+      characters.forEach((character) => {
         const characterCard = document.createElement("div");
         characterCard.classList.add("character-card");
         const details = character.url;
@@ -39,6 +43,20 @@ function getCharacters(page) {
 
         cardsContainer.appendChild(characterCard);
       });
+
+      return api.get("/episode/");
+    })
+    .then((response) => {
+      const episode = response.data.info;
+      const episodios = document.getElementById("episodios");
+      episodios.innerHTML = `<p>EPISÓDIOS: ${episode.count}</p>`;
+
+      return api.get("/location?");
+    })
+    .then((response) => {
+      const location = response.data.info;
+      const localizacoes = document.getElementById("localizacoes");
+      localizacoes.innerHTML = `<p>LOCALIZAÇÕES: ${location.count}</p>`;
     })
     .catch((error) => console.error("erro ao obter dados", error));
 }
