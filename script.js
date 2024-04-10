@@ -9,6 +9,7 @@ function getCharacters(page) {
     .get(`/character/?page=${page}`)
     .then((response) => {
       const characters = response.data.results;
+
       const charactersNumber = response.data.info;
 
       const startIndex = (page - 1) * ItemsPerPage;
@@ -19,7 +20,7 @@ function getCharacters(page) {
       console.log(response.data.info);
 
       const personagens = document.getElementById("personagens");
-      personagens.innerHTML = `<p>PERSONAGENS: ${charactersNumber.count}</p>`;
+      personagens.innerHTML = `<p>PERSONAGENS: <span class="fontwhite">${charactersNumber.count}</span></p>`;
 
       characters.forEach((character) => {
         const characterCard = document.createElement("div");
@@ -49,14 +50,14 @@ function getCharacters(page) {
     .then((response) => {
       const episode = response.data.info;
       const episodios = document.getElementById("episodios");
-      episodios.innerHTML = `<p>EPISÓDIOS: ${episode.count}</p>`;
+      episodios.innerHTML = `<p>EPISÓDIOS: <span class="fontwhite"> ${episode.count}</span></p>`;
 
       return api.get("/location?");
     })
     .then((response) => {
       const location = response.data.info;
       const localizacoes = document.getElementById("localizacoes");
-      localizacoes.innerHTML = `<p>LOCALIZAÇÕES: ${location.count}</p>`;
+      localizacoes.innerHTML = `<p>LOCALIZAÇÕES: <span class="fontwhite"> ${location.count}</span></p>`;
     })
     .catch((error) => console.error("erro ao obter dados", error));
 }

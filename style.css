@@ -77,3 +77,15 @@ footer {
 .card-title {
   color: white;
 }
+
+#personagens,
+#episodios,
+#localizacoes,
+#developer {
+  color: #4d9f4b;
+  font-weight: bold;
+}
+
+.fontwhite {
+  color: white;
+}
