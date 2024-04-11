@@ -31,18 +31,18 @@
 .container-cards {
   width: 70vw;
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
   justify-content: center;
-  align-content: start;
+  /* align-content: start; */
 }
 
 .character-card {
   border-radius: 5px;
-  padding: 1rem;
-  margin: 1rem;
+  padding: 5px;
+  margin: 10px;
   width: 350px;
-  display: flex;
-  flex-direction: column;
+  /* display: flex;
+  flex-direction: column; */
 }
 
 /* .character-card img {

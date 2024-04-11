@@ -65,7 +65,7 @@ async function getCharacters(page = 1) {
               <a href="${details}" class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1">${character.name}</a>
               <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
 
-              <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
+              <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${character.location.name}</p>
         
             </div>
         </div>
