@@ -38,6 +38,7 @@ async function getAllCharacters(
 
 // Exemplo de como usar a função getAllCharacters
 let currentPage = 1; // Variável para armazenar a página atual
+const pageNumber = document.getElementById("pageNumber");
 
 // Função para carregar os personagens de uma página específica
 async function getCharacters(page = 1) {
@@ -72,6 +73,8 @@ async function getCharacters(page = 1) {
 
       cardsContainer.appendChild(characterCard);
     });
+
+    pageNumber.innerHTML = `<p class="page-link" >${page}</p>S`;
 
     console.log(allCharacters);
   } catch (error) {

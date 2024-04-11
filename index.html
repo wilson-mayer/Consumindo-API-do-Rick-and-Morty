@@ -60,19 +60,25 @@
         <nav aria-label="Search results pages">
           <ul class="pagination">
             <li class="page-item">
-              <button class="page-link" onclick="loadPreviousPage()">
-                Previous
+              <button
+                id="prewiew"
+                class="page-link"
+                onclick="loadPreviousPage()"
+              >
+                Prev
               </button>
             </li>
-
+            <li id="pageNumber" class="page-item"></li>
             <li class="page-item">
-              <button class="page-link" onclick="loadNextPage()">Next</button>
+              <button id="next" class="page-link" onclick="loadNextPage()">
+                Next
+              </button>
             </li>
           </ul>
         </nav>
       </div>
 
-           <div class="row container-cards"></div>
+      <div class="row container-cards"></div>
     </div>
 
     <div class="modal"></div>
@@ -95,7 +101,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
-    <script src="./api.js"></script>
     <script src="./script.js"></script>
   </body>
 </html>
