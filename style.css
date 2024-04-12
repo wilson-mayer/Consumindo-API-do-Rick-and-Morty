@@ -36,17 +36,19 @@
 }
 
 .container-cards {
-  width: 70vw;
+  width: 60vw;
   display: flex;
 
   justify-content: center;
 }
 
 .character-card {
+  display: flex;
+  justify-content: center;
   border-radius: 5px;
   padding: 5px;
-  margin: 10px;
-  width: 350px;
+  margin: 20px;
+  width: 300px;
 }
 
 footer {
@@ -88,8 +90,4 @@ footer {
 }
 .colormodal {
   background-color: #2b3035;
-}
-
-.colorcardM {
-  background-color: #105718;
 }

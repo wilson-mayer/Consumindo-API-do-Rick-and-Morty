@@ -59,7 +59,7 @@ async function getCharacters(page = 1) {
       const details = character.url;
 
       characterCard.innerHTML = `
-        <div class="card bg-transparent">
+        <div class="card bg-transparent ">
             <img src='${character.image}' alt='' class="card-img-top">
             <div class="card-body bg-transparent border border-top-0 border-success rounded-bottom">
             <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-lg" id="abrirModal${
