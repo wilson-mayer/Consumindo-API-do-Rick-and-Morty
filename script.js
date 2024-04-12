@@ -62,16 +62,51 @@ async function getCharacters(page = 1) {
         <div class="card bg-transparent">
             <img src='${character.image}' alt='' class="card-img-top">
             <div class="card-body bg-transparent border border-top-0 border-success rounded-bottom">
-              <a href="${details}" class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1">${character.name}</a>
-              <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
-
-              <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${character.location.name}</p>
-        
+            <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
+            <button type="button" class="btn btn-primary" id="abrirModal">
+        Abrir Modal
+    </button>
+            <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${character.location.name}</p>
+            
             </div>
-        </div>
-        `;
+            </div>
+            `;
 
       cardsContainer.appendChild(characterCard);
+
+      document
+        .getElementById("abrirModal")
+        .addEventListener("click", function () {
+          // Crie o conteúdo da modal
+          const modalContent = `
+            <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h1 class="modal-title fs-5" id="staticBackdropLabel">Título modal</h1>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <!-- Conteúdo da modal -->
+                            ...
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="button" class="btn btn-primary">Entendido</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+
+          // Insira o conteúdo da modal no container
+          document.getElementById("modalContainer").innerHTML = modalContent;
+
+          // Abre o modal
+          var myModalEl = document.getElementById("staticBackdrop");
+          var myModal = new bootstrap.Modal(myModalEl);
+          myModal.show();
+        });
     });
 
     pageNumber.innerHTML = `<p class="page-link" >${page}</p>S`;
@@ -81,6 +116,7 @@ async function getCharacters(page = 1) {
     console.error("Erro ao buscar personagens:", error);
   }
 }
+// <a href="${details}" class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1">${character.name}</a>
 
 // Função para carregar a próxima página
 function loadNextPage() {
