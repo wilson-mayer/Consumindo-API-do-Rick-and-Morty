@@ -63,7 +63,7 @@ async function getCharacters(page = 1) {
             <img src='${character.image}' alt='' class="card-img-top">
             <div class="card-body bg-transparent border border-top-0 border-success rounded-bottom">
             <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
-            <button type="button" class="btn btn-primary" id="abrirModal">
+            <button type="button" class="btn btn-primary" id="abrirModal${character.id}">
         Abrir Modal
     </button>
             <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${character.location.name}</p>
@@ -75,7 +75,7 @@ async function getCharacters(page = 1) {
       cardsContainer.appendChild(characterCard);
 
       document
-        .getElementById("abrirModal")
+        .getElementById(`abrirModal${character.id}`)
         .addEventListener("click", function () {
           // Crie o conteúdo da modal
           const modalContent = `
