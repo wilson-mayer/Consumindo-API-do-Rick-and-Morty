@@ -74,6 +74,9 @@ footer {
 .nomehover:hover {
   color: orange;
 }
+.nomehover {
+  cursor: pointer;
+}
 .card-title {
   color: white;
 }
