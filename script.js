@@ -97,7 +97,7 @@ async function getCharacters(page = 1) {
                         <div class="card bg-transparent cardModal">
                         <img  src='${character.image}' alt='' class="card-img-top">
                         <div class="card-body bg-transparent border border-top-0 border-success rounded-bottom">
-                        <a href="${details}" class="card-title fw-bold fs-1 text-decoration-none nomehovermodal fontmodal lh-lg">${character.name}</a>
+                        <a href="${details}" target="_blank" class="card-title fw-bold fs-1 text-decoration-none nomehovermodal fontmodal lh-lg">${character.name}</a>
                         <p class="card-text text-white lh-base fs-4 ">Status: ${character.status}</p> 
                         <p class="card-text text-white lh-base fs-4">Especie: ${character.species} </p>
                         
@@ -127,7 +127,7 @@ async function getCharacters(page = 1) {
         });
     });
 
-    pageNumber.innerHTML = `<p class="page-link" >${page}</p>S`;
+    pageNumber.innerHTML = `<p class="page-link bg-transparent text-warning fw-bold" >${page}</p>`;
 
     console.log(allCharacters);
   } catch (error) {

@@ -20,7 +20,9 @@
 }
 .background-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-image: url(../images/FUNDO_2.jpg);
   background-size: cover;
   background-position: bottom;
@@ -28,6 +30,11 @@
   padding-bottom: 500px;
   padding-top: 30px;
 }
+
+.buttonPagenation {
+  height: 50px;
+}
+
 .container-cards {
   width: 70vw;
   display: flex;

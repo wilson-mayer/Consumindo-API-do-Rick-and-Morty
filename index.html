@@ -56,26 +56,28 @@
     </div>
 
     <div class="container-fluid background-container">
-      <div class="row">
-        <nav aria-label="Search results pages">
-          <ul class="pagination">
-            <li class="page-item">
-              <button
-                id="prewiew"
-                class="page-link"
-                onclick="loadPreviousPage()"
-              >
-                Prev
-              </button>
-            </li>
-            <li id="pageNumber" class="page-item"></li>
-            <li class="page-item">
-              <button id="next" class="page-link" onclick="loadNextPage()">
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
+      <div class="row d-flex buttonPagenation">
+        <ul class="pagination">
+          <li class="page-item">
+            <button
+              id="prewiew"
+              class="page-link bg-transparent text-warning"
+              onclick="loadPreviousPage()"
+            >
+              Prev
+            </button>
+          </li>
+          <li id="pageNumber" class="page-item"></li>
+          <li class="page-item">
+            <button
+              id="next"
+              class="page-link bg-transparent text-warning"
+              onclick="loadNextPage()"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
       </div>
 
       <div class="row container-cards"></div>
