@@ -31,9 +31,8 @@
 .container-cards {
   width: 70vw;
   display: flex;
-  /* flex-wrap: wrap; */
+
   justify-content: center;
-  /* align-content: start; */
 }
 
 .character-card {
@@ -41,38 +40,19 @@
   padding: 5px;
   margin: 10px;
   width: 350px;
-  /* display: flex;
-  flex-direction: column; */
 }
 
-/* .character-card img {
-  border-radius: 5px;
-  width: 266px;
-  height: auto;
-  margin-bottom: 1rem;
-} */
-
-/* .character-card p {
-  margin-left: 10px;
-  color: white;
-} */
 footer {
-  /* width: 100vw; */
   background-color: rgb(19, 18, 18);
   height: 200px;
 }
-
-/* .character-card h5 {
-  margin-left: 10px;
-  color: white;
-} */
 
 .card {
   width: 18rem;
 }
 
 .nomehover:hover {
-  color: orange;
+  color: #ff9800;
 }
 .nomehover {
   cursor: pointer;
@@ -91,4 +71,18 @@ footer {
 
 .fontwhite {
   color: white;
+}
+
+.nomehovermodal:hover {
+  color: #ff9800;
+}
+.fontmodal {
+  color: white;
+}
+.colormodal {
+  background-color: #2b3035;
+}
+
+.colorcardM {
+  background-color: #105718;
 }

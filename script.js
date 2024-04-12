@@ -62,14 +62,20 @@ async function getCharacters(page = 1) {
         <div class="card bg-transparent">
             <img src='${character.image}' alt='' class="card-img-top">
             <div class="card-body bg-transparent border border-top-0 border-success rounded-bottom">
-            <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1" id="abrirModal${character.id}">
+            <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-lg" id="abrirModal${
+              character.id
+            }">
             ${character.name}
     </a>
 
-            <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
+            <p class="card-text text-white lh-base">${character.status} - ${
+        character.species
+      }</p>
             
-            <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${character.location.name}</p>
-            
+            <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${
+              character.location.name
+            }</p>
+            <p class="card-text text-white-50 fs-6 lh-1">Visto a última vez em:</p><p class="card-text text-white fs-6">${character.episode.pop()}</p>
             </div>
             </div>
             `;
@@ -80,21 +86,25 @@ async function getCharacters(page = 1) {
         .getElementById(`abrirModal${character.id}`)
         .addEventListener("click", function () {
           // Crie o conteúdo da modal
-          const modalContent = `
+          document.getElementById("modalContainer").innerHTML = `
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
-                        <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="staticBackdropLabel">${character.name}</h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <div class="modal-header justify-content-center   ">
+                            <h1 class="modal-title fs-3 " id="staticBackdropLabel ">${character.name}</h1>
                         </div>
-                        <div class="modal-body">
-                        <div class="card bg-transparent">
-                        <img src='${character.image}' alt='' class="card-img-top">
+                        <div class="modal-body colormodal d-flex justify-content-center">
+                        <div class="card bg-transparent cardModal">
+                        <img  src='${character.image}' alt='' class="card-img-top">
                         <div class="card-body bg-transparent border border-top-0 border-success rounded-bottom">
-                        <p class="card-text text-white lh-base">${character.status} - ${character.species}</p>
-                        <a href="${details}" class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1">${character.name}</a>
-                        <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-6">${character.location.name}</p>
+                        <a href="${details}" class="card-title fw-bold fs-1 text-decoration-none nomehovermodal fontmodal lh-lg">${character.name}</a>
+                        <p class="card-text text-white lh-base fs-4 ">Status: ${character.status}</p> 
+                        <p class="card-text text-white lh-base fs-4">Especie: ${character.species} </p>
+                        
+                        <p class="card-text text-white lh-base fs-4">Gênero: ${character.gender} </p>
+                        <p class="card-text text-white lh-base fs-4">Origem: ${character.origin.name} </p>
+                       
+                        <p class="card-text text-white-50 fs-5 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-4">${character.location.name}</p>
                         
                         </div>
                         </div>
@@ -109,7 +119,6 @@ async function getCharacters(page = 1) {
         `;
 
           // Insira o conteúdo da modal no container
-          document.getElementById("modalContainer").innerHTML = modalContent;
 
           // Abre o modal
           var myModalEl = document.getElementById("staticBackdrop");
@@ -145,7 +154,7 @@ function loadPreviousPage() {
 window.onload = function () {
   getCharacters();
 };
-
+let episode = [];
 function informationFooter() {
   axios
     .get(`https://rickandmortyapi.com/api/character/`)
@@ -158,9 +167,9 @@ function informationFooter() {
       return axios.get("https://rickandmortyapi.com/api/episode/");
     })
     .then((response) => {
-      const episode = response.data.info;
+      episode = response.data;
       const episodios = document.getElementById("episodios");
-      episodios.innerHTML = `<p>EPISÓDIOS: <span class="fontwhite"> ${episode.count}</span></p>`;
+      episodios.innerHTML = `<p>EPISÓDIOS: <span class="fontwhite"> ${episode.info.count}</span></p>`;
 
       return axios.get("https://rickandmortyapi.com/api/location?");
     })
