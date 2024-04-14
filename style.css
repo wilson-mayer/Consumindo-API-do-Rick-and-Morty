@@ -5,9 +5,10 @@
 }
 
 .iconerick {
-  width: 35px;
-  margin-top: 5px;
+  width: 60px;
+  margin-top: 15px;
   margin-left: 5px;
+  animation: rickTurn 2s;
 }
 .headertop {
   height: 300px;
@@ -17,62 +18,59 @@
   font-size: 5rem;
   color: #105718;
   font-weight: 800;
+  animation: slideDown 1s cubic-bezier(0.42, 0, 0.58, 1) forwards;
 }
 .background-container {
   display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
   background-image: url(../images/FUNDO_2.jpg);
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
-  padding-bottom: 500px;
+  padding-bottom: 600px;
   padding-top: 30px;
 }
+
+.buttonPagenation {
+  height: 50px;
+  animation: pagination 2s ease-in-out;
+}
+
 .container-cards {
-  width: 70vw;
+  width: 80vw;
   display: flex;
-  /* flex-wrap: wrap; */
   justify-content: center;
-  /* align-content: start; */
 }
 
 .character-card {
+  display: flex;
+  justify-content: center;
   border-radius: 5px;
   padding: 5px;
-  margin: 10px;
-  width: 350px;
-  /* display: flex;
-  flex-direction: column; */
+  margin: 20px;
+  width: 400px;
 }
 
-/* .character-card img {
-  border-radius: 5px;
-  width: 266px;
-  height: auto;
-  margin-bottom: 1rem;
-} */
-
-/* .character-card p {
-  margin-left: 10px;
-  color: white;
-} */
 footer {
-  /* width: 100vw; */
   background-color: rgb(19, 18, 18);
-  height: 200px;
+  height: 400px;
 }
-
-/* .character-card h5 {
-  margin-left: 10px;
-  color: white;
-} */
 
 .card {
-  width: 18rem;
+  width: 25rem;
+}
+.cardResults {
+  width: 15rem;
+  margin: 20px;
 }
 
 .nomehover:hover {
-  color: orange;
+  color: #ff9800;
+}
+.nomehover {
+  cursor: pointer;
 }
 .card-title {
   color: white;
@@ -82,10 +80,58 @@ footer {
 #episodios,
 #localizacoes,
 #developer {
+  font-size: 1.5rem;
   color: #4d9f4b;
   font-weight: bold;
 }
-
+.developer {
+  margin-top: 150px;
+}
 .fontwhite {
   color: white;
+}
+
+.nomehovermodal:hover {
+  color: #ff9800;
+}
+.fontmodal {
+  color: white;
+}
+.colormodal {
+  background-color: #2b3035;
+}
+
+.searchResults {
+  display: flex;
+  justify-content: center;
+}
+
+@keyframes pagination {
+  0% {
+    opacity: 0;
+    transform: translateX(-400px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+@keyframes rickTurn {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes slideDown {
+  0% {
+    opacity: 0;
+    transform: translateY(-80px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

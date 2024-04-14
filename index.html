@@ -9,6 +9,11 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+    <link
+      rel="icon"
+      href="./images/RICK_MORTY_ICON-01.svg"
+      type="image/x-icon"
+    />
   </head>
   <body>
     <div class="container-fluid">
@@ -28,77 +33,87 @@
       </div>
       <div class="row justify-content-center mb-5">
         <div class="col-6">
-          <div class="input-group flex-nowrap">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Pesquise"
-              aria-label="Pesquise"
-              aria-describedby="addon-wrapping"
-            />
-            <button class="input-group-text" type="submit" id="addon-wrapping">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="16"
-                height="16"
-                fill="currentColor"
-                class="bi bi-search"
-                viewBox="0 0 16 16"
+          <form id="searchForm">
+            <div class="input-group mb-3">
+              <input
+                type="text"
+                class="form-control"
+                id="searchInput"
+                placeholder="Faça sua pesquisa pelo nome do personagem"
+              />
+              <button
+                id="fetchButton"
+                type="submit"
+                class="btn btn-outline-success"
               >
-                <path
-                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
-                />
-              </svg>
-            </button>
-          </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001q.044.06.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1 1 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0"
+                  />
+                </svg>
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </div>
 
     <div class="container-fluid background-container">
-      <div class="row">
-        <nav aria-label="Search results pages">
-          <ul class="pagination">
-            <li class="page-item">
-              <button
-                id="prewiew"
-                class="page-link"
-                onclick="loadPreviousPage()"
-              >
-                Prev
-              </button>
-            </li>
-            <li id="pageNumber" class="page-item"></li>
-            <li class="page-item">
-              <button id="next" class="page-link" onclick="loadNextPage()">
-                Next
-              </button>
-            </li>
-          </ul>
-        </nav>
+      <div class="row d-flex buttonPagenation">
+        <ul class="pagination">
+          <li class="page-item">
+            <button
+              id="prewiew"
+              class="page-link bg-transparent text-warning"
+              onclick="loadPreviousPage()"
+            >
+              Prev
+            </button>
+          </li>
+          <li id="pageNumber" class="page-item"></li>
+          <li class="page-item">
+            <button
+              id="next"
+              class="page-link bg-transparent text-warning"
+              onclick="loadNextPage()"
+            >
+              Next
+            </button>
+          </li>
+        </ul>
       </div>
 
       <div class="row container-cards"></div>
     </div>
 
-    <div class="modal"></div>
+    <div id="modalContainer"></div>
+
+    <div id="modalResults"></div>
 
     <footer class="container-fluid">
-      <div class="row">
-        <div id="personagens" class="col"></div>
-        <div id="localizacoes" class="col"></div>
-        <div id="episodios" class="col"></div>
+      <div class="row justify-content-center mb-5 pt-5">
+        <div id="personagens" class="col-2 text-end mt-5"></div>
+        <div id="localizacoes" class="col-2 text-center mt-5"></div>
+        <div id="episodios" class="col-2 text-start mt-5"></div>
       </div>
-      <div class="row">
-        <div class="col">
+      <div class="row developer">
+        <div class="col text-center mt-5">
           <p id="developer">
             Desenvolvido por:
-            <span class="fontwhite"> Wilson Ramos Mayer</span> em 2024
+            <span class="fontwhite nomehovermodal"> Wilson Ramos Mayer</span> em
+            2024
           </p>
         </div>
       </div>
     </footer>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
     <script src="./script.js"></script>
