@@ -157,3 +157,58 @@ function informationFooter() {
 }
 
 informationFooter();
+
+const searchResults = document.getElementById("searchInput");
+
+console.log(searchResults);
+
+document
+  .getElementById("fetchButton")
+  .addEventListener("click", function (event) {
+    event.preventDefault();
+    axios
+      .get(
+        `https://rickandmortyapi.com/api/character/?name=${searchResults.value}`
+      )
+      .then((response) => {
+        const search = response.data.results;
+
+        search.forEach((character) => {
+          document.getElementById("modalResults").innerHTML = `
+          <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+              <div class="modal-content">
+                  <div class="modal-header">
+                      <h5 class="modal-title" id="resultsModalLabel">Resultados da Pesquisa</h5>
+                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                      <!-- Aqui você pode exibir os resultados da API -->
+                      <!-- Por exemplo: <ul id="searchResults"></ul> -->
+                      <div class="card bg-transparent cardModal">
+                        <img  src='${character.image}' alt='' class="card-img-top">
+                        <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
+                        <a href="${character.url}" target="_blank" class="card-title fw-bold fs-1 text-decoration-none nomehovermodal fontmodal lh-1">${character.name}</a>
+                        <p class="card-text text-white lh-base fs-4 ">Status: ${character.status}</p> 
+                        <p class="card-text text-white lh-base fs-4">Espécie: ${character.species} </p>
+                        
+                        <p class="card-text text-white lh-base fs-4">Gênero: ${character.gender} </p>
+                        <p class="card-text text-white lh-base fs-4">Origem: ${character.origin.name} </p>
+                       
+                        <p class="card-text text-white-50 fs-5 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-4">${character.location.name}</p>
+                        
+                        </div>
+                  </div>
+              </div>
+          </div>
+      </div>`;
+          const resultsModal = new bootstrap.Modal(
+            document.getElementById("resultsModal")
+          );
+          resultsModal.show();
+        });
+      })
+      .catch((error) => {
+        console.error("Erro na busca:", error);
+      });
+  });
