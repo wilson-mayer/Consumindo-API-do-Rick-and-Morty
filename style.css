@@ -39,7 +39,7 @@
 }
 
 .container-cards {
-  width: 80vw;
+  width: 70vw;
   display: flex;
   justify-content: center;
 }
@@ -49,8 +49,8 @@
   justify-content: center;
   border-radius: 5px;
   padding: 5px;
-  margin: 20px;
-  width: 400px;
+  margin: 10px;
+  flex-basis: calc(30%);
 }
 
 footer {
@@ -76,9 +76,9 @@ footer {
   color: white;
 }
 
-#personagens,
-#episodios,
-#localizacoes,
+#charactersN,
+#episodesN,
+#locationN,
 #developer {
   font-size: 1.5rem;
   color: #4d9f4b;

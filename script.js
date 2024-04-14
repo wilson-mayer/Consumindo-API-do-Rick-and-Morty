@@ -129,21 +129,21 @@ function informationFooter() {
     .then((response) => {
       const charactersNumber = response.data.info;
 
-      const personagens = document.getElementById("personagens");
+      const personagens = document.getElementById("charactersN");
       personagens.innerHTML = `<p>PERSONAGENS: <span class="fontwhite nomehovermodal">${charactersNumber.count}</span></p>`;
 
       return axios.get("https://rickandmortyapi.com/api/episode/");
     })
     .then((response) => {
       episode = response.data;
-      const episodios = document.getElementById("episodios");
+      const episodios = document.getElementById("episodesN");
       episodios.innerHTML = `<p>EPISÓDIOS: <span class="fontwhite nomehovermodal"> ${episode.info.count}</span></p>`;
 
       return axios.get("https://rickandmortyapi.com/api/location?");
     })
     .then((response) => {
       const location = response.data.info;
-      const localizacoes = document.getElementById("localizacoes");
+      const localizacoes = document.getElementById("locationN");
       localizacoes.innerHTML = `<p>LOCALIZAÇÕES: <span class="fontwhite nomehovermodal"> ${location.count}</span></p>`;
     })
     .catch((error) => console.error("erro ao obter dados", error));
