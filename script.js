@@ -1,8 +1,6 @@
 const cardsContainer = document.querySelector(".container-cards");
 const contentModal = document.querySelector(".modal");
 
-// Array para armazenar todos os personagens
-// Função assíncrona para buscar todos os personagens de todas as páginas da API
 function getAllCharacters(url = "https://rickandmortyapi.com/api/character/") {
   return axios
     .get(url)
@@ -109,15 +107,11 @@ function getCharacters(page = 1) {
     });
 }
 
-// <a href="${details}" class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1">${character.name}</a>
-
-// Função para carregar a próxima página
 function loadNextPage() {
   currentPage++;
   getCharacters(currentPage);
 }
 
-// Função para carregar a página anterior
 function loadPreviousPage() {
   if (currentPage > 1) {
     currentPage--;
@@ -125,7 +119,6 @@ function loadPreviousPage() {
   getCharacters(currentPage);
 }
 
-// Carregar a primeira página ao carregar a página
 window.onload = function () {
   getCharacters();
 };
@@ -173,40 +166,59 @@ document
       .then((response) => {
         const search = response.data.results;
 
+        const searchResultsContainer = document.createElement("div");
+
         search.forEach((character) => {
-          document.getElementById("modalResults").innerHTML = `
-          <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
-          <div class="modal-dialog">
-              <div class="modal-content">
-                  <div class="modal-header">
-                      <h5 class="modal-title" id="resultsModalLabel">Resultados da Pesquisa</h5>
-                      <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body">
-                      <!-- Aqui você pode exibir os resultados da API -->
-                      <!-- Por exemplo: <ul id="searchResults"></ul> -->
-                      <div class="card bg-transparent cardModal">
-                        <img  src='${character.image}' alt='' class="card-img-top">
-                        <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
-                        <a href="${character.url}" target="_blank" class="card-title fw-bold fs-1 text-decoration-none nomehovermodal fontmodal lh-1">${character.name}</a>
-                        <p class="card-text text-white lh-base fs-4 ">Status: ${character.status}</p> 
-                        <p class="card-text text-white lh-base fs-4">Espécie: ${character.species} </p>
-                        
-                        <p class="card-text text-white lh-base fs-4">Gênero: ${character.gender} </p>
-                        <p class="card-text text-white lh-base fs-4">Origem: ${character.origin.name} </p>
-                       
-                        <p class="card-text text-white-50 fs-5 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-4">${character.location.name}</p>
-                        
-                        </div>
-                  </div>
-              </div>
-          </div>
-      </div>`;
-          const resultsModal = new bootstrap.Modal(
-            document.getElementById("resultsModal")
+          const characterCard = document.createElement("div");
+          characterCard.classList.add(
+            "cardResults",
+            "bg-transparent",
+            "cardModal"
           );
-          resultsModal.show();
+
+          characterCard.innerHTML = `
+          <div class="  bg-transparent cardModal">
+            <img src='${character.image}' alt='' class="card-img-top rounded-top ">
+            <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
+            <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1" id="abrirModal${character.id}">
+            ${character.name}
+            </a>
+            <p class="card-text text-white lh-base fs-5">${character.status} - ${character.species}</p>
+            <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
+            </div>
+          </div>
+            `;
+
+          searchResultsContainer.appendChild(characterCard);
         });
+
+        document.getElementById("modalResults").innerHTML = `
+        <div class="modal fade" id="resultsModal" tabindex="-1" aria-labelledby="resultsModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+              <div class="modal-header justify-content-center">
+                <h5 class="modal-title fs-3" id="resultsModalLabel">Resultados da Pesquisa</h5>
+                
+              </div>
+              <div class="modal-body colormodal searchResults">
+              <div class= "row ">
+              <div class= "col">
+                ${searchResultsContainer.innerHTML}
+              </div>
+              </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            
+              </div>
+            </div>
+          </div>
+        </div>`;
+
+        const resultsModal = new bootstrap.Modal(
+          document.getElementById("resultsModal")
+        );
+        resultsModal.show();
       })
       .catch((error) => {
         console.error("Erro na busca:", error);
