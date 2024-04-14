@@ -46,14 +46,14 @@ function getCharacters(page = 1) {
             <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
             <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1" id="abrirModal${character.id}">
             ${character.name}
-    </a>
+            </a>
 
             <p class="card-text text-white lh-base fs-5">${character.status} - ${character.species}</p>
             
             <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
             </div>
-            </div>
-            `;
+          </div>
+          `;
 
         cardsContainer.appendChild(characterCard);
 
@@ -179,10 +179,8 @@ document
           characterCard.innerHTML = `
           <div class="  bg-transparent cardModal">
             <img src='${character.image}' alt='' class="card-img-top rounded-top ">
-            <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
-            <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1" id="abrirModal${character.id}">
-            ${character.name}
-            </a>
+            <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom p-3">
+            <a href="${character.url}" target="_blank" class="card-title fw-bold fs-3 text-decoration-none nomehovermodal fontmodal lh-1">${character.name}</a>
             <p class="card-text text-white lh-base fs-5">${character.status} - ${character.species}</p>
             <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
             </div>
