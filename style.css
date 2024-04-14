@@ -5,8 +5,8 @@
 }
 
 .iconerick {
-  width: 35px;
-  margin-top: 5px;
+  width: 40px;
+  margin-top: 15px;
   margin-left: 5px;
 }
 .headertop {
@@ -27,7 +27,7 @@
   background-size: cover;
   background-position: bottom;
   background-repeat: no-repeat;
-  padding-bottom: 500px;
+  padding-bottom: 600px;
   padding-top: 30px;
 }
 
@@ -36,9 +36,8 @@
 }
 
 .container-cards {
-  width: 60vw;
+  width: 80vw;
   display: flex;
-
   justify-content: center;
 }
 
@@ -48,16 +47,16 @@
   border-radius: 5px;
   padding: 5px;
   margin: 20px;
-  width: 300px;
+  width: 400px;
 }
 
 footer {
   background-color: rgb(19, 18, 18);
-  height: 200px;
+  height: 400px;
 }
 
 .card {
-  width: 18rem;
+  width: 25rem;
 }
 
 .nomehover:hover {
@@ -74,10 +73,13 @@ footer {
 #episodios,
 #localizacoes,
 #developer {
+  font-size: 1.5rem;
   color: #4d9f4b;
   font-weight: bold;
 }
-
+.developer {
+  margin-top: 150px;
+}
 .fontwhite {
   color: white;
 }
