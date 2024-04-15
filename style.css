@@ -66,19 +66,19 @@ footer {
   margin: 20px;
 }
 
-.nomehover:hover {
+.namehover:hover {
   color: #ff9800;
 }
-.nomehover {
+.namehover {
   cursor: pointer;
 }
 .card-title {
   color: white;
 }
 
-#charactersN,
-#episodesN,
-#locationN,
+#charactersnumber,
+#episodesnumber,
+#locationnumber,
 #developer {
   font-size: 1.5rem;
   color: #4d9f4b;
@@ -91,7 +91,7 @@ footer {
   color: white;
 }
 
-.nomehovermodal:hover {
+.namehovermodal:hover {
   color: #ff9800;
 }
 .fontmodal {

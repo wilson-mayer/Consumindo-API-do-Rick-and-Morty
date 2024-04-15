@@ -44,15 +44,12 @@ function getCharacters(page = 1) {
         <div class="card bg-transparent ">
             <img src='${character.image}' alt='' class="card-img-top">
             <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
-            <a  class="card-title fw-bold fs-2 text-decoration-none nomehover lh-1" id="abrirModal${character.id}">
-            ${character.name}
-            </a>
-
+            <a  class="card-title fw-bold fs-2 text-decoration-none namehover lh-1" id="abrirModal${character.id}">
+            ${character.name}</a>
             <p class="card-text text-white lh-base fs-5">${character.status} - ${character.species}</p>
-            
             <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
             </div>
-          </div>
+        </div>
           `;
 
         cardsContainer.appendChild(characterCard);
@@ -71,21 +68,17 @@ function getCharacters(page = 1) {
                         <div class="card bg-transparent cardModal">
                         <img  src='${character.image}' alt='' class="card-img-top">
                         <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom">
-                        <a href="${details}" target="_blank" class="card-title fw-bold fs-1 text-decoration-none nomehovermodal fontmodal lh-1">${character.name}</a>
+                        <a href="${details}" target="_blank" class="card-title fw-bold fs-1 text-decoration-none namehovermodal fontmodal lh-1">${character.name}</a>
                         <p class="card-text text-white lh-base fs-4 ">Status: ${character.status}</p> 
                         <p class="card-text text-white lh-base fs-4">Espécie: ${character.species} </p>
-                        
                         <p class="card-text text-white lh-base fs-4">Gênero: ${character.gender} </p>
                         <p class="card-text text-white lh-base fs-4">Origem: ${character.origin.name} </p>
-                       
                         <p class="card-text text-white-50 fs-5 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-4">${character.location.name}</p>
-                        
                         </div>
                         </div>
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            
                         </div>
                     </div>
                 </div>
@@ -122,29 +115,31 @@ function loadPreviousPage() {
 window.onload = function () {
   getCharacters();
 };
+
 let episode = [];
+
 function informationFooter() {
   axios
     .get(`https://rickandmortyapi.com/api/character/`)
     .then((response) => {
       const charactersNumber = response.data.info;
 
-      const personagens = document.getElementById("charactersN");
-      personagens.innerHTML = `<p>PERSONAGENS: <span class="fontwhite nomehovermodal">${charactersNumber.count}</span></p>`;
+      const characters = document.getElementById("charactersnumber");
+      characters.innerHTML = `<p>PERSONAGENS: <span class="fontwhite namehovermodal">${charactersNumber.count}</span></p>`;
 
       return axios.get("https://rickandmortyapi.com/api/episode/");
     })
     .then((response) => {
       episode = response.data;
-      const episodios = document.getElementById("episodesN");
-      episodios.innerHTML = `<p>EPISÓDIOS: <span class="fontwhite nomehovermodal"> ${episode.info.count}</span></p>`;
+      const episodes = document.getElementById("episodesnumber");
+      episodes.innerHTML = `<p>EPISÓDIOS: <span class="fontwhite namehovermodal"> ${episode.info.count}</span></p>`;
 
       return axios.get("https://rickandmortyapi.com/api/location?");
     })
     .then((response) => {
       const location = response.data.info;
-      const localizacoes = document.getElementById("locationN");
-      localizacoes.innerHTML = `<p>LOCALIZAÇÕES: <span class="fontwhite nomehovermodal"> ${location.count}</span></p>`;
+      const locations = document.getElementById("locationnumber");
+      locations.innerHTML = `<p>LOCALIZAÇÕES: <span class="fontwhite namehovermodal"> ${location.count}</span></p>`;
     })
     .catch((error) => console.error("erro ao obter dados", error));
 }
@@ -152,8 +147,6 @@ function informationFooter() {
 informationFooter();
 
 const searchResults = document.getElementById("searchInput");
-
-console.log(searchResults);
 
 document
   .getElementById("fetchButton")
@@ -180,7 +173,7 @@ document
           <div class="  bg-transparent cardModal">
             <img src='${character.image}' alt='' class="card-img-top rounded-top ">
             <div class="card-body bg-transparent border border-3 border-top-0 border-success rounded-bottom p-3">
-            <a href="${character.url}" target="_blank" class="card-title fw-bold fs-3 text-decoration-none nomehovermodal fontmodal lh-1">${character.name}</a>
+            <a href="${character.url}" target="_blank" class="card-title fw-bold fs-3 text-decoration-none namehovermodal fontmodal lh-1">${character.name}</a>
             <p class="card-text text-white lh-base fs-5">${character.status} - ${character.species}</p>
             <p class="card-text text-white-50 fs-6 lh-1">Ultima localização conhecida:</p><p class="card-text text-white fs-5">${character.location.name}</p>
             </div>
@@ -196,7 +189,6 @@ document
             <div class="modal-content">
               <div class="modal-header justify-content-center">
                 <h5 class="modal-title fs-3" id="resultsModalLabel">Resultados da Pesquisa</h5>
-                
               </div>
               <div class="modal-body colormodal searchResults">
               <div class= "row ">
@@ -207,7 +199,6 @@ document
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            
               </div>
             </div>
           </div>
