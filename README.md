@@ -6,7 +6,7 @@
 
 ## 🕵Sobre
 
-Aplicação com o objetivo de consumir a API do Rick and Morty e exibir os cards de cada personagem com sua informações báscias.
+Aplicação com o objetivo de consumir a API do Rick and Morty e exibir os cards de cada personagem com suas informações báscias.
 
 ---
 
