@@ -12,7 +12,7 @@ Aplicação com o objetivo de consumir a API do Rick and Morty e exibir os cards
 
 ---
 
-##  👩🏾Quem Faz 
+##  🧑‍🦰Quem Faz 
 
 - WILSON RAMOS MAYER
 
