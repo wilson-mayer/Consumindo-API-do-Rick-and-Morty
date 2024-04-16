@@ -53,6 +53,30 @@
   flex-basis: calc(30%);
 }
 
+.Alive {
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+  background: rgb(85, 204, 68);
+  border-radius: 50%;
+}
+
+.Dead {
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+  background: rgb(214, 61, 46);
+  border-radius: 50%;
+}
+
+.unknown {
+  height: 12px;
+  width: 12px;
+  margin-right: 5px;
+  background: rgb(158, 158, 158);
+  border-radius: 50%;
+}
+
 footer {
   background-color: rgb(19, 18, 18);
   height: 400px;
